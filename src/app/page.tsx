@@ -39,10 +39,10 @@ export default async function HomePage() {
           <div className="flex items-center gap-3">
             {user ? (
               <Link
-                href="/dashboard"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition shadow-sm"
+                href="/teacher/dashboard"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition shadow-sm"
               >
-                <span>لوحة التحكم</span>
+                <span>مساحة عمل المعلم</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             ) : (
@@ -54,7 +54,7 @@ export default async function HomePage() {
                   تسجيل الدخول
                 </Link>
                 <Link
-                  href="/login"
+                  href="/teacher/dashboard"
                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition shadow-sm"
                 >
                   <span>ابدأ الآن</span>
@@ -94,16 +94,17 @@ export default async function HomePage() {
 
         <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
           <Link
-            href="/login"
-            className="px-6 py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition shadow-lg shadow-indigo-600/20 text-base"
+            href="/teacher/dashboard"
+            className="touch-target-board px-8 py-4 rounded-2xl bg-indigo-600 text-white font-black hover:bg-indigo-700 transition shadow-xl shadow-indigo-600/30 text-lg flex items-center gap-2"
           >
-            تجربة التسجيل وتسجيل الدخول
+            <span>الدخول إلى مساحة العمل والشاشات التفاعلية</span>
+            <ArrowRight className="w-5 h-5" />
           </Link>
           <a
             href="https://github.com/alshimaamohamed154-creator/Teach_easy"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 font-medium hover:bg-slate-100 dark:hover:bg-slate-900 transition text-base"
+            className="touch-target-board px-6 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 font-bold hover:bg-slate-100 dark:hover:bg-slate-900 transition text-base"
           >
             عرض المستودع على GitHub
           </a>

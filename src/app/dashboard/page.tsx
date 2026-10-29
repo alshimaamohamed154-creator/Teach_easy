@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/utils/supabase/server'
-import { GraduationCap, User, Mail, ShieldCheck, Database, LogOut, CheckCircle2 } from 'lucide-react'
+import { GraduationCap, User, Mail, ShieldCheck, Database, LogOut, CheckCircle2, ArrowRight } from 'lucide-react'
 
 export const instant = false
 
@@ -43,16 +43,26 @@ export default async function DashboardPage() {
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Welcome Banner */}
-        <div className="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-3xl p-8 text-white mb-8 shadow-xl">
-          <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
-            لوحة التحكم
-          </span>
-          <h1 className="text-3xl font-extrabold mt-4 mb-2">
-            أهلاً بك، {user.user_metadata?.full_name || user.email?.split('@')[0]} 👋
-          </h1>
-          <p className="text-indigo-100 max-w-xl text-sm sm:text-base">
-            تم تسجيل دخولك بنجاح عبر Supabase Auth وتأمين المسار بواسطة Next.js SSR Middleware.
-          </p>
+        <div className="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-3xl p-8 text-white mb-8 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div>
+            <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
+              لوحة التحكم
+            </span>
+            <h1 className="text-3xl font-extrabold mt-4 mb-2">
+              أهلاً بك، {user.user_metadata?.full_name || user.email?.split('@')[0]} 👋
+            </h1>
+            <p className="text-indigo-100 max-w-xl text-sm sm:text-base">
+              تم تسجيل دخولك بنجاح. يمكنك الآن الانتقال لمساحة عمل المعلم لإدارة الفصول وإطلاق الأنشطة على الشاشات التفاعلية.
+            </p>
+          </div>
+
+          <Link
+            href="/teacher/dashboard"
+            className="touch-target-board px-6 py-3.5 rounded-2xl bg-white text-indigo-700 hover:bg-indigo-50 font-black text-sm shadow-xl flex items-center gap-2 transition-all active:scale-95 shrink-0"
+          >
+            <span>مساحة عمل المعلم والفصول</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         {/* Status Grid */}
