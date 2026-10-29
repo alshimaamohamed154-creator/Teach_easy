@@ -30,7 +30,7 @@ export function BoardFooter({
         className="touch-target-board h-14 px-6 rounded-2xl bg-slate-800 hover:bg-slate-750 disabled:opacity-30 border border-slate-700 text-white font-bold text-base flex items-center gap-3 transition active:scale-95 cursor-pointer shadow-md"
       >
         <ArrowRight className="w-5 h-5 text-slate-400" />
-        <span>المرحلة السابقة</span>
+        <span>الخطوة اللي قبلها</span>
       </button>
 
       {/* Progress Pills */}
@@ -56,7 +56,7 @@ export function BoardFooter({
           onClick={onFinish}
           className="touch-target-board h-14 px-8 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-lg flex items-center gap-3 transition active:scale-95 cursor-pointer shadow-xl shadow-emerald-900/30"
         >
-          <span>اكتمال النشاط والانتقال للتقييم</span>
+          <span>خلّصنا، يلا للتقييم</span>
           <CheckCircle2 className="w-6 h-6" />
         </button>
       ) : (
@@ -65,7 +65,7 @@ export function BoardFooter({
           onClick={onNext}
           className="touch-target-board h-14 px-8 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-lg flex items-center gap-3 transition active:scale-95 cursor-pointer shadow-xl shadow-indigo-900/30"
         >
-          <span>المرحلة التالية</span>
+          <span>الخطوة الجاية</span>
           <ArrowLeft className="w-5 h-5" />
         </button>
       )}

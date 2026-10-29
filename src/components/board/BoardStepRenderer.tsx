@@ -63,7 +63,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
               </div>
               <div>
                 <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest">
-                  نظرة عامة والهدف التعليمي
+                  إيه اللي هنعمله
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-black text-white">{block.titleAr}</h2>
               </div>
@@ -72,13 +72,13 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
             <div className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 mb-8">
               <h3 className="text-lg font-bold text-slate-200 mb-2 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-amber-400" />
-                سياق التحدي الواقعي:
+                ليه ده مهم:
               </h3>
               <p className="text-lg text-slate-300 leading-relaxed">{block.realWorldContextAr}</p>
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-white mb-4">أهداف النشاط والمخرجات المتوقعة:</h3>
+              <h3 className="text-lg font-bold text-white mb-4">هدفنا من النشاط:</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {block.objectives.map((obj, i) => (
                   <div
@@ -125,7 +125,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
             {block.teacherTipAr && (
               <div className="mt-8 p-5 rounded-2xl bg-amber-950/30 border border-amber-900/50 text-amber-200 text-base font-medium flex items-center gap-3">
                 <HelpCircle className="w-6 h-6 text-amber-400 shrink-0" />
-                <span>إرشاد المعلم: {block.teacherTipAr}</span>
+                <span>نصيحة: {block.teacherTipAr}</span>
               </div>
             )}
           </div>
@@ -148,7 +148,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-800 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-2">
                 <Users className="w-4 h-4" />
-                القيادة الدائرية والمسؤولية المشتركة
+                كل واحد وله دور
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-white">{block.titleAr}</h2>
             </div>
@@ -167,7 +167,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
                     <p className="text-sm text-slate-300 mb-4">{r.descriptionAr}</p>
                   </div>
                   <div className="pt-4 border-t border-slate-700/60 text-xs font-semibold text-emerald-400 bg-emerald-950/30 -mx-6 -mb-6 p-4 rounded-b-2xl">
-                    المهمة الأساسية: {r.responsibilityAr}
+                    شغلك إيه: {r.responsibilityAr}
                   </div>
                 </div>
               ))}
@@ -176,7 +176,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
             {groups && groups.length > 0 && (
               <div className="mt-12 pt-8 border-t border-slate-800">
                 <h3 className="text-xl font-bold text-slate-200 mb-6 text-center">
-                  قوائم المجموعات وتوزيع الطلاب في الفصل
+                  المجموعات وتوزيع الطلاب
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {groups.map((g) => (
@@ -206,7 +206,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
         <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl">
             <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-800">
-              سؤال تعليم الأقران (ConcepTest)
+              اختار إجابتك
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-4 mb-8 leading-snug">
               {block.questionAr}
@@ -245,14 +245,14 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
 
             <div className="flex justify-between items-center pt-6 border-t border-slate-800">
               <span className="text-sm font-semibold text-slate-400">
-                {selectedMcqOption ? 'تم تسجيل اختيارك' : 'اضغط على الإجابة لتحديدها'}
+                {selectedMcqOption ? 'تمام، اختيارك مسجّل' : 'دوس على إجابتك'}
               </span>
               <button
                 type="button"
                 onClick={() => setShowMcqAnswer(!showMcqAnswer)}
                 className="touch-target-board h-12 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition active:scale-95 cursor-pointer shadow-md"
               >
-                {showMcqAnswer ? 'إخفاء الإجابة النموذجية' : 'كشف الإجابة والتفسير'}
+                {showMcqAnswer ? 'اخفي الإجابة' : 'شوف الإجابة الصحيحة'}
               </button>
             </div>
           </div>
@@ -271,12 +271,12 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
               className="touch-target-board my-6 inline-flex items-center gap-3 px-8 py-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xl shadow-xl shadow-indigo-600/30 transition-all active:scale-95 cursor-pointer"
             >
               {isRevealed ? <EyeOff className="w-6 h-6" /> : <Eye className="w-6 h-6" />}
-              <span>{isRevealed ? 'إخفاء الحل والتفسير' : block.teaserAr}</span>
+              <span>{isRevealed ? 'اخفي الحل' : block.teaserAr}</span>
             </button>
 
             {isRevealed && (
               <div className="mt-8 p-8 rounded-3xl bg-emerald-950/30 border border-emerald-700/60 text-emerald-100 text-xl font-medium leading-relaxed animate-in fade-in zoom-in-95 duration-300">
-                <p className="font-bold text-2xl text-emerald-300 mb-4">التحليل والتفسير العلمي:</p>
+                <p className="font-bold text-2xl text-emerald-300 mb-4">التفسير:</p>
                 <p>{block.revealedContentAr}</p>
                 {block.explanationAr && (
                   <p className="mt-4 pt-4 border-t border-emerald-800/40 text-base text-emerald-200/90 font-mono">
@@ -295,7 +295,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
             <div className="text-center mb-8">
               <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-800">
-                تحدي التصنيف باللمس
+                صنّفوا بالدوس
               </span>
               <h2 className="text-3xl font-black text-white mt-2">{block.titleAr}</h2>
               <p className="text-slate-300 text-base mt-2">{block.instructionsAr}</p>
@@ -336,7 +336,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
                       ))}
                   </div>
                   <span className="text-xs text-indigo-400 font-semibold text-center">
-                    {classState?.selectedItemId ? '👈 اضغط هنا لتسكين البطاقة المحددة' : 'مربع التصنيف'}
+                    {classState?.selectedItemId ? '👈 دوس هنا تحط البطاقة' : 'مربع التصنيف'}
                   </span>
                 </div>
               ))}
@@ -344,7 +344,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
 
             {/* Unassigned Items */}
             <div>
-              <h4 className="text-sm font-bold text-slate-300 mb-3">البطاقات المتبقية للتصنيف (اضغط عليها أولاً ثم اختر المربع أعلاه):</h4>
+              <h4 className="text-sm font-bold text-slate-300 mb-3">البطاقات اللي باقي تصنيفها (دوس عليها الأول، وبعدين اختار المربع):</h4>
               <div className="flex flex-wrap gap-3">
                 {block.items
                   .filter((it) => !classState?.assignments[it.id])
@@ -449,7 +449,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
                   </label>
                   <textarea
                     rows={3}
-                    placeholder="سجل خلاصة إجابة الفريق هنا..."
+                    placeholder="اكتبوا إجابة الفريق هنا..."
                     className="w-full bg-slate-800/80 border border-slate-700 rounded-2xl p-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base"
                   />
                 </div>
@@ -464,7 +464,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
         <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 text-center">
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
             <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-800">
-              جلسة التأمل الذاتي وتطوير الفريق
+              لحظة تأمل
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-white mt-4 mb-8">{block.titleAr}</h2>
 
@@ -484,7 +484,7 @@ export function BoardStepRenderer({ block, groups }: BoardStepRendererProps) {
 
             {block.debriefGuideAr && (
               <p className="text-sm font-medium text-slate-400 bg-slate-800/40 p-4 rounded-xl border border-slate-700/60">
-                💡 توجيه المعلم: {block.debriefGuideAr}
+                💡 نصيحة: {block.debriefGuideAr}
               </p>
             )}
           </div>

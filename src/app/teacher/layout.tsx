@@ -45,7 +45,7 @@ export default async function TeacherLayout({
               className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
             >
               <LayoutDashboard className="w-5 h-5" />
-              <span>لوحة التحكم</span>
+              <span>الرئيسية</span>
             </Link>
 
             <Link
@@ -61,7 +61,7 @@ export default async function TeacherLayout({
               className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
             >
               <BookOpen className="w-5 h-5" />
-              <span>مكتبة الأنشطة</span>
+              <span>الأنشطة</span>
             </Link>
 
             <Link
@@ -69,7 +69,7 @@ export default async function TeacherLayout({
               className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition shadow-sm font-bold mt-4"
             >
               <PlusCircle className="w-5 h-5" />
-              <span>بدء جلسة جديدة</span>
+              <span>ابدأ حصة جديدة</span>
             </Link>
           </nav>
         </div>
@@ -79,14 +79,14 @@ export default async function TeacherLayout({
           <div className="flex items-center justify-between">
             <div className="truncate">
               <p className="text-sm font-bold text-slate-900 dark:text-white truncate">
-                {user?.user_metadata?.full_name || 'الأستاذ المعلم'}
+                {user?.user_metadata?.full_name || 'أستاذنا'}
               </p>
-              <p className="text-xs text-slate-500 truncate">{user?.email || 'معلم معتمد'}</p>
+              <p className="text-xs text-slate-500 truncate">{user?.email || 'مدرّس'}</p>
             </div>
             <form action="/auth/signout" method="post">
               <button
                 type="submit"
-                title="تسجيل الخروج"
+                title="خروج"
                 className="p-2 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition cursor-pointer"
               >
                 <LogOut className="w-4 h-4" />

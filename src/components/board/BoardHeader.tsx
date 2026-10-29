@@ -65,7 +65,7 @@ export function BoardHeader({
       {/* Progress Indicators */}
       <div className="hidden md:flex items-center gap-2">
         <span className="text-sm font-semibold text-slate-300 ml-2">
-          المرحلة {currentStep + 1} من {totalSteps}
+          خطوة {currentStep + 1} من {totalSteps}
         </span>
         <div className="flex items-center gap-1.5">
           {Array.from({ length: totalSteps }, (_, i) => (
@@ -88,11 +88,11 @@ export function BoardHeader({
         <button
           onClick={toggleFullscreen}
           type="button"
-          title={isFullscreen ? 'الخروج من ملء الشاشة' : 'ملء الشاشة التفاعلية'}
+          title={isFullscreen ? 'رجوع لحجم عادي' : 'ملء الشاشة'}
           className="touch-target-board h-12 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-2 text-sm font-semibold transition active:scale-95 cursor-pointer"
         >
           {isFullscreen ? <Minimize2 className="w-5 h-5 text-indigo-400" /> : <Maximize2 className="w-5 h-5 text-indigo-400" />}
-          <span className="hidden sm:inline">{isFullscreen ? 'نافذة عادية' : 'ملء الشاشة'}</span>
+          <span className="hidden sm:inline">{isFullscreen ? 'حجم عادي' : 'ملء الشاشة'}</span>
         </button>
 
         <Link
@@ -100,7 +100,7 @@ export function BoardHeader({
           className="touch-target-board h-12 px-4 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/60 flex items-center gap-2 text-sm font-semibold transition active:scale-95"
         >
           <LogOut className="w-5 h-5 text-rose-400" />
-          <span className="hidden sm:inline">إنهاء الجلسة</span>
+          <span className="hidden sm:inline">خلّص الحصة</span>
         </Link>
       </div>
     </header>

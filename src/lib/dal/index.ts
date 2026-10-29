@@ -89,7 +89,7 @@ let memoryStudents: StudentItem[] = EGYPTIAN_DEMO_NAMES.map((name, i) => ({
   teacher_id: 'default',
   full_name: name,
   student_code: `STU-2026-${String(i + 1).padStart(3, '0')}`,
-  notes: i % 4 === 0 ? 'مشارك متفاعل ولديه شغف بالتجارب المعملية' : null,
+  notes: i % 4 === 0 ? 'متفاعل جدًا وبيحب التجارب العملية' : null,
   class_id: i < 18 ? 'cls-1' : 'cls-2',
   created_at: new Date().toISOString(),
 }))
@@ -236,8 +236,61 @@ export async function createSessionRecord(
   }>
 ): Promise<string> {
   const activity = ACTIVITIES_MAP.get(activityId) || ACTIVITIES_MAP.get('think-pair-share')!
-  const targetClass = memoryClasses.find((c) => c.id === classId)
 
+  // بنحاول نحفظ الجلسة في Supabase عشان تفضل موجودة حتى لو سيرفرلس حصل له cold start تاني
+  try {
+    const supabase = await createClient()
+    const { data: sessionRow, error: sessionError } = await supabase
+      .from('sessions')
+      .insert({
+        teacher_id: teacherId,
+        class_id: classId,
+        activity_id: activityId,
+        activity_snapshot: activity,
+        status: 'in_progress',
+        grouping_strategy: strategy,
+        current_step_index: 0,
+        started_at: new Date().toISOString(),
+      })
+      .select()
+      .single()
+
+    if (sessionError || !sessionRow) throw sessionError || new Error('session insert failed')
+
+    for (const g of groups) {
+      const { data: groupRow, error: groupError } = await supabase
+        .from('session_groups')
+        .insert({ session_id: sessionRow.id, group_number: g.groupNumber, group_name: g.groupName })
+        .select()
+        .single()
+
+      if (groupError || !groupRow) throw groupError || new Error('group insert failed')
+      if (g.members.length === 0) continue
+
+      const { data: participantRows, error: participantError } = await supabase
+        .from('session_participants')
+        .insert(g.members.map((m) => ({ session_id: sessionRow.id, student_id: m.studentId, is_present: true })))
+        .select()
+
+      if (participantError || !participantRows) throw participantError || new Error('participant insert failed')
+
+      const { error: memberError } = await supabase.from('session_group_members').insert(
+        g.members.map((m, idx) => ({
+          group_id: groupRow.id,
+          participant_id: participantRows[idx].id,
+          role_title: m.roleTitle || null,
+          role_description: m.roleDescription || null,
+        }))
+      )
+      if (memberError) throw memberError
+    }
+
+    return sessionRow.id
+  } catch {
+    // fallback للذاكرة لو Supabase مش متاح أو البيانات تجريبية
+  }
+
+  const targetClass = memoryClasses.find((c) => c.id === classId)
   const newSession: SessionItem = {
     id: `sess-${Date.now()}`,
     teacher_id: teacherId,
@@ -265,17 +318,139 @@ export async function createSessionRecord(
 }
 
 export async function getSessionById(sessionId: string, teacherId: string): Promise<SessionItem | null> {
+  try {
+    const supabase = await createClient()
+    const { data: sessionRow, error } = await supabase
+      .from('sessions')
+      .select('*, classes(name, subject)')
+      .eq('id', sessionId)
+      .eq('teacher_id', teacherId)
+      .single()
+
+    if (error || !sessionRow) throw error || new Error('session not found')
+
+    const { data: groupRows } = await supabase
+      .from('session_groups')
+      .select(
+        'id, group_number, group_name, session_group_members(id, role_title, role_description, session_participants(student_id, students(full_name)))'
+      )
+      .eq('session_id', sessionId)
+      .order('group_number')
+
+    const groups = (groupRows || []).map((g: any) => ({
+      id: g.id,
+      groupNumber: g.group_number,
+      groupName: g.group_name,
+      members: (g.session_group_members || []).map((gm: any) => ({
+        studentId: gm.session_participants?.student_id,
+        fullName: gm.session_participants?.students?.full_name || 'طالب',
+        roleTitle: gm.role_title || undefined,
+        roleDescription: gm.role_description || undefined,
+      })),
+    }))
+
+    return {
+      id: sessionRow.id,
+      teacher_id: sessionRow.teacher_id,
+      class_id: sessionRow.class_id,
+      className: sessionRow.classes?.name || 'الصف الثاني الثانوي',
+      subject: sessionRow.classes?.subject || 'الأحياء',
+      activity_id: sessionRow.activity_id,
+      activity_snapshot: sessionRow.activity_snapshot,
+      status: sessionRow.status,
+      grouping_strategy: sessionRow.grouping_strategy,
+      current_step_index: sessionRow.current_step_index,
+      started_at: sessionRow.started_at,
+      completed_at: sessionRow.completed_at,
+      created_at: sessionRow.created_at,
+      groups,
+    }
+  } catch {
+    // fallback للذاكرة
+  }
+
   return memorySessions.find((s) => s.id === sessionId) || null
 }
 
 export async function updateSessionStep(sessionId: string, stepIndex: number) {
+  try {
+    const supabase = await createClient()
+    const { error } = await supabase
+      .from('sessions')
+      .update({ current_step_index: stepIndex })
+      .eq('id', sessionId)
+    if (error) throw error
+    return
+  } catch {
+    // fallback للذاكرة
+  }
+
   const session = memorySessions.find((s) => s.id === sessionId)
   if (session) {
     session.current_step_index = stepIndex
   }
 }
 
-export async function completeSession(sessionId: string) {
+export interface SessionAssessmentPayload {
+  groupRatings: Record<number, number>
+  competencyObservations: Record<string, { competencyId: string; level: number; note: string }>
+  teacherReflection: string
+}
+
+export async function completeSession(sessionId: string, assessment?: SessionAssessmentPayload) {
+  try {
+    const supabase = await createClient()
+    const { data: sessionRow, error: updateError } = await supabase
+      .from('sessions')
+      .update({ status: 'completed', completed_at: new Date().toISOString() })
+      .eq('id', sessionId)
+      .select()
+      .single()
+
+    if (updateError || !sessionRow) throw updateError || new Error('session not found')
+
+    if (assessment) {
+      const { data: groupRows } = await supabase
+        .from('session_groups')
+        .select('id, group_number')
+        .eq('session_id', sessionId)
+      const groupIdByNumber = new Map((groupRows || []).map((g: any) => [g.group_number, g.id]))
+
+      const assessmentRows = Object.entries(assessment.groupRatings).map(([groupNumber, rating]) => ({
+        session_id: sessionId,
+        group_id: groupIdByNumber.get(Number(groupNumber)) || null,
+        collaboration_quality: rating,
+        teacher_reflection: assessment.teacherReflection || null,
+      }))
+
+      if (assessmentRows.length > 0) {
+        await supabase.from('session_assessments').insert(assessmentRows)
+      } else if (assessment.teacherReflection) {
+        await supabase
+          .from('session_assessments')
+          .insert({ session_id: sessionId, teacher_reflection: assessment.teacherReflection })
+      }
+
+      const obsEntries = Object.entries(assessment.competencyObservations)
+      if (obsEntries.length > 0) {
+        await supabase.from('student_competency_observations').insert(
+          obsEntries.map(([studentId, obs]) => ({
+            teacher_id: sessionRow.teacher_id,
+            student_id: studentId,
+            session_id: sessionId,
+            competency_id: obs.competencyId,
+            level: obs.level,
+            evidence_note: obs.note || null,
+          }))
+        )
+      }
+    }
+
+    return
+  } catch {
+    // fallback للذاكرة
+  }
+
   const session = memorySessions.find((s) => s.id === sessionId)
   if (session) {
     session.status = 'completed'
@@ -287,12 +462,12 @@ export async function getTeacherAnalytics(teacherId: string) {
   return {
     totalClasses: memoryClasses.length,
     totalStudents: memoryStudents.length,
-    totalSessions: memorySessions.length + 3, // includes historic demo sessions
+    totalSessions: memorySessions.length + 3, // بيانات تجريبية لحصص سابقة
     competenciesTracked: COMPETENCIES.length,
     recentObservations: [
-      { studentName: 'أحمد محمود الشناوي', competency: 'الاستماع الفعال', level: 3, date: 'اليوم' },
-      { studentName: 'مريم عصام المنشاوي', competency: 'الشرح وتعليم الأقران', level: 4, date: 'أمس' },
-      { studentName: 'يوسف كريم عبد الرحمن', competency: 'حل المشكلات التشاركي', level: 3, date: 'منذ يومين' },
+      { studentName: 'أحمد محمود الشناوي', competency: 'الاستماع الكويس', level: 3, date: 'النهاردة' },
+      { studentName: 'مريم عصام المنشاوي', competency: 'الشرح وتعليم زمايله', level: 4, date: 'امبارح' },
+      { studentName: 'يوسف كريم عبد الرحمن', competency: 'حل المشاكل مع بعض', level: 3, date: 'من يومين' },
     ],
   }
 }

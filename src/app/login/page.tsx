@@ -38,20 +38,20 @@ export default function LoginPage() {
 
         <div>
           <h2 className="text-4xl font-black leading-tight mb-6">
-            التعلّم التعاوني
+            التعلّم الجماعي
             <br />
             على الشاشة التفاعلية
           </h2>
           <p className="text-indigo-100 text-lg leading-relaxed max-w-sm">
-            وفّر وقت الإعداد وركّز على ما يهم: مشاركة الطلاب وبناء التفكير النقدي داخل الفصل.
+            وفّر وقت التحضير وركّز على الأهم: مشاركة الطلاب وتفكيرهم جوه الفصل.
           </p>
 
           <ul className="mt-10 space-y-4">
             {[
-              'أنشطة جماعية جاهزة للعرض الفوري',
-              'تجميع المجموعات تلقائياً بعدل وتوازن',
-              'مؤقت وأدوار وخطوات واضحة على الشاشة',
-              'تقييم سلوكي بعد كل جلسة',
+              'أنشطة جماعية جاهزة تشغّلها على طول',
+              'تقسيم المجموعات تلقائيًا وبعدل',
+              'عداد وأدوار وخطوات واضحة على الشاشة',
+              'تقييم بسيط لكل طالب بعد الحصة',
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 text-indigo-100">
                 <CheckCircle2 className="w-5 h-5 text-indigo-300 shrink-0 mt-0.5" />
@@ -61,7 +61,7 @@ export default function LoginPage() {
           </ul>
         </div>
 
-        <p className="text-indigo-300 text-sm">© 2026 Teach Easy — منصة التعلم التعاوني</p>
+        <p className="text-indigo-300 text-sm">© 2026 Teach Easy — التعلم الجماعي ببساطة</p>
       </div>
 
       {/* ── Right panel — form ── */}
@@ -78,12 +78,12 @@ export default function LoginPage() {
           <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl ring-1 ring-slate-900/5 dark:ring-white/10 p-8 sm:p-10">
             <div className="mb-8">
               <h1 className="text-2xl font-black text-slate-900 dark:text-white">
-                {isSignUp ? 'أنشئ حسابك الآن' : 'أهلاً بعودتك'}
+                {isSignUp ? 'اعمل حسابك دلوقتي' : 'أهلاً بيك تاني'}
               </h1>
               <p className="mt-1.5 text-sm text-slate-500 dark:text-slate-400">
                 {isSignUp
-                  ? 'أنشئ حسابك المجاني وابدأ أول حصة خلال دقيقة'
-                  : 'سجّل دخولك للوصول إلى مساحة عملك'}
+                  ? 'اعمل حسابك المجاني وابدأ أول حصة في دقيقة'
+                  : 'سجّل دخولك عشان توصل لمساحتك'}
               </p>
             </div>
 
@@ -108,18 +108,18 @@ export default function LoginPage() {
 
             <form action={handleSubmit} className="space-y-5">
               {isSignUp && (
-                <FormField label="الاسم الكامل" icon={<User className="w-5 h-5" />}>
+                <FormField label="الاسم بالكامل" icon={<User className="w-5 h-5" />}>
                   <input
                     name="fullName"
                     type="text"
                     required={isSignUp}
-                    placeholder="اسم المعلم"
+                    placeholder="اسمك"
                     className={inputClass}
                   />
                 </FormField>
               )}
 
-              <FormField label="البريد الإلكتروني" icon={<Mail className="w-5 h-5" />}>
+              <FormField label="الإيميل" icon={<Mail className="w-5 h-5" />}>
                 <input
                   name="email"
                   type="email"
@@ -130,7 +130,7 @@ export default function LoginPage() {
               </FormField>
 
               <FormField
-                label="كلمة المرور"
+                label="كلمة السر"
                 icon={<Lock className="w-5 h-5" />}
                 suffix={
                   <button
@@ -138,7 +138,7 @@ export default function LoginPage() {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute inset-y-0 left-0 px-3 flex items-center text-slate-400 hover:text-slate-600 transition"
                     tabIndex={-1}
-                    aria-label={showPassword ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'}
+                    aria-label={showPassword ? 'اخفي كلمة السر' : 'اظهر كلمة السر'}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -162,7 +162,7 @@ export default function LoginPage() {
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <>
-                    <span>{isSignUp ? 'إنشاء الحساب' : 'دخول'}</span>
+                    <span>{isSignUp ? 'اعمل الحساب' : 'دخول'}</span>
                     <ArrowLeft className="w-4 h-4" />
                   </>
                 )}
@@ -171,13 +171,13 @@ export default function LoginPage() {
 
             {/* Toggle sign-in / sign-up */}
             <div className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
-              {isSignUp ? 'لديك حساب بالفعل؟ ' : 'ليس لديك حساب؟ '}
+              {isSignUp ? 'عندك حساب فعلاً؟ ' : 'معاك حساب؟ '}
               <button
                 type="button"
                 onClick={() => { setIsSignUp(!isSignUp); setMessage(null) }}
                 className="font-bold text-indigo-600 hover:text-indigo-500 underline underline-offset-4"
               >
-                {isSignUp ? 'تسجيل الدخول' : 'أنشئ حساباً مجانياً'}
+                {isSignUp ? 'سجّل دخولك' : 'اعمل حساب مجاني'}
               </button>
             </div>
 
@@ -187,7 +187,7 @@ export default function LoginPage() {
                 href="/"
                 className="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition"
               >
-                ← العودة إلى الصفحة الرئيسية
+                ← رجوع للصفحة الرئيسية
               </Link>
             </div>
           </div>

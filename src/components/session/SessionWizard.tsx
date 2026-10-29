@@ -154,14 +154,14 @@ export function SessionWizard({
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
           <Settings2 className="w-5 h-5 text-indigo-600" />
-          <span>إعدادات الجلسة والنشاط</span>
+          <span>إعدادات الحصة</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Class Select */}
           <div>
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">
-              1. اختر الفصل الدراسي
+              ١. اختار الفصل
             </label>
             <select
               value={selectedClassId}
@@ -179,7 +179,7 @@ export function SessionWizard({
           {/* Activity Select */}
           <div>
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">
-              2. استراتيجية النشاط التعاوني
+              ٢. اختار النشاط
             </label>
             <select
               value={selectedActivityId}
@@ -200,7 +200,7 @@ export function SessionWizard({
           {/* Grouping Strategy */}
           <div>
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">
-              3. خوارزمية تكوين المجموعات
+              ٣. إزاي تقسّم المجموعات
             </label>
             <div className="flex gap-2">
               <button
@@ -216,7 +216,7 @@ export function SessionWizard({
                 }`}
               >
                 <Scale className="w-3.5 h-3.5" />
-                <span>متوازن</span>
+                <span>متوازنة</span>
               </button>
 
               <button
@@ -232,7 +232,7 @@ export function SessionWizard({
                 }`}
               >
                 <Shuffle className="w-3.5 h-3.5" />
-                <span>عشوائي</span>
+                <span>عشوائية</span>
               </button>
             </div>
           </div>
@@ -244,10 +244,10 @@ export function SessionWizard({
         <div className="flex justify-between items-center mb-4">
           <div>
             <h3 className="font-extrabold text-base text-slate-900 dark:text-white">
-              تسجيل الحضور والغياب السريع ({presentCount} حاضر من {activeClassStudents.length})
+              الحضور والغياب ({presentCount} حاضر من {activeClassStudents.length})
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
-              اضغط على اسم الطالب لاستبعاده إذا كان غائباً وسيعاد توزيع المجموعات فوراً بدون نقص:
+              دوس على اسم أي طالب غايب عشان تستبعده، والمجموعات تتوزع تاني على طول:
             </p>
           </div>
         </div>
@@ -283,10 +283,10 @@ export function SessionWizard({
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
           <div>
             <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full">
-              جاهز للإطلاق
+              جاهزة للشغل
             </span>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">
-              المجموعات المقترحة ({groups.length} مجموعات)
+              المجموعات ({groups.length} مجموعات)
             </h3>
           </div>
 
@@ -296,7 +296,7 @@ export function SessionWizard({
             className="touch-target-board px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
           >
             <Shuffle className="w-4 h-4 text-indigo-500" />
-            <span>إعادة توزيع المجموعات</span>
+            <span>وزّعهم تاني</span>
           </button>
         </div>
 
@@ -346,7 +346,7 @@ export function SessionWizard({
             ) : (
               <>
                 <PlayCircle className="w-6 h-6" />
-                <span>إطلاق وضع الشاشة التفاعلية للنشاط الآن</span>
+                <span>شغّل الشاشة التفاعلية دلوقتي</span>
               </>
             )}
           </button>

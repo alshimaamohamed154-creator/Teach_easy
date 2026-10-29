@@ -21,9 +21,13 @@ export default async function AssessmentPage({
     notFound()
   }
 
-  async function handleCompleteSession(data: any) {
+  async function handleCompleteSession(data: {
+    groupRatings: Record<number, number>
+    competencyObservations: Record<string, { competencyId: string; level: number; note: string }>
+    teacherReflection: string
+  }) {
     'use server'
-    await completeSession(sessionId)
+    await completeSession(sessionId, data)
   }
 
   return (

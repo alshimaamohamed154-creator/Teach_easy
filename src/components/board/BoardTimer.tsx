@@ -84,7 +84,7 @@ export function BoardTimer({ initialSeconds, promptAr, guidelines }: BoardTimerP
       {/* Central Question/Prompt */}
       <div className="w-full bg-slate-800/80 border border-slate-700/80 rounded-3xl p-6 sm:p-8 mb-8 text-center shadow-xl backdrop-blur-sm">
         <span className="text-xs font-bold uppercase tracking-wider text-indigo-400 bg-indigo-950/60 border border-indigo-800/40 px-3 py-1 rounded-full">
-          مهمة التفكير والنقاش
+          فكّروا وناقشوا
         </span>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mt-4 leading-relaxed">
           {promptAr}
@@ -118,7 +118,7 @@ export function BoardTimer({ initialSeconds, promptAr, guidelines }: BoardTimerP
           {formattedTime}
         </span>
         <span className="text-xs sm:text-sm font-bold text-slate-400 mt-2 uppercase tracking-widest">
-          {isExpired ? 'انتهى الوقت!' : isRunning ? 'العداد يعمل' : 'متوقف مؤقتاً'}
+          {isExpired ? 'خلص الوقت!' : isRunning ? 'العداد شغال' : 'العداد واقف'}
         </span>
       </div>
 
@@ -134,7 +134,7 @@ export function BoardTimer({ initialSeconds, promptAr, guidelines }: BoardTimerP
           }`}
         >
           {isRunning ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-          <span>{isRunning ? 'إيقاف مؤقت' : 'ابدأ العداد'}</span>
+          <span>{isRunning ? 'وقف شوية' : 'ابدأ العداد'}</span>
         </button>
 
         <button
@@ -143,7 +143,7 @@ export function BoardTimer({ initialSeconds, promptAr, guidelines }: BoardTimerP
           className="touch-target-board h-16 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-base flex items-center gap-2 transition active:scale-95 cursor-pointer"
         >
           <Plus className="w-5 h-5 text-indigo-400" />
-          <span>+1 دقيقة</span>
+          <span>+ دقيقة</span>
         </button>
 
         <button
@@ -152,13 +152,13 @@ export function BoardTimer({ initialSeconds, promptAr, guidelines }: BoardTimerP
           className="touch-target-board h-16 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-base flex items-center gap-2 transition active:scale-95 cursor-pointer"
         >
           <RotateCcw className="w-5 h-5 text-slate-400" />
-          <span>إعادة ضبط</span>
+          <span>ابدأ من الأول</span>
         </button>
 
         <button
           onClick={playChime}
           type="button"
-          title="تجربة الجرس الصوتي"
+          title="جرّب صوت الجرس"
           className="touch-target-board h-16 w-16 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center justify-center transition active:scale-95 cursor-pointer"
         >
           <Bell className="w-6 h-6 text-amber-400" />

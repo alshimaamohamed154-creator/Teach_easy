@@ -81,13 +81,13 @@ export function SessionAssessmentView({
       {/* Header */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
         <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
-          مرحلة التقييم الختامي وتدوين الشواهد
+          خطوة التقييم الأخيرة
         </span>
         <h1 className="text-3xl font-black text-slate-900 dark:text-white mt-2">
-          تقييم جلسة: {sessionData.activityTitle}
+          تقييم حصة: {sessionData.activityTitle}
         </h1>
         <p className="text-sm text-slate-500 mt-1">
-          {sessionData.className} • {sessionData.subject} • تقييم سريع ومبني على السلوك الملاحظ
+          {sessionData.className} • {sessionData.subject} • تقييم سريع وبسيط
         </p>
       </div>
 
@@ -95,10 +95,10 @@ export function SessionAssessmentView({
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
           <Users className="w-5 h-5 text-indigo-600" />
-          <span>1. تقييم جودة المخرج الجماعي للمجموعات</span>
+          <span>١. قيّم شغل كل مجموعة</span>
         </h2>
         <p className="text-xs text-slate-500 mb-6">
-          حدد مستوى إنجاز كل مجموعة للمهمة والتزامها بالوقت وتماسك فريقها:
+          حدد مستوى كل مجموعة في إنجاز المهمة والتزامها بالوقت:
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -144,10 +144,10 @@ export function SessionAssessmentView({
           <div>
             <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Award className="w-5 h-5 text-amber-500" />
-              <span>2. رصد الكفاءات السلوكية الفردية (ملاحظات سريعة)</span>
+              <span>٢. ملاحظات سريعة على الطلاب</span>
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              ليس شرطاً تقييم جميع الطلاب في كل جلسة — سجل فقط الشواهد البارزة التي لاحظتها:
+              مش لازم تقيّم كل الطلاب كل مرة، سجّل بس اللي لاحظته فعلاً:
             </p>
           </div>
         </div>
@@ -215,17 +215,17 @@ export function SessionAssessmentView({
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
           <MessageSquare className="w-5 h-5 text-indigo-600" />
-          <span>3. تأمل المعلم وتوصية الجلسة القادمة</span>
+          <span>٣. ملاحظتك على الحصة</span>
         </h2>
         <p className="text-xs text-slate-500 mb-4">
-          دون ملاحظة سرية خاصة بك لتحسين تفاعل الطلاب في النشاط القادم:
+          اكتب ملاحظة خاصة بيك تساعدك في الحصة الجاية:
         </p>
 
         <textarea
           rows={3}
           value={teacherReflection}
           onChange={(e) => setTeacherReflection(e.target.value)}
-          placeholder="مثال: تفاعل الطلاب كان ممتازاً مع عداد التفكير الفردي، ولكن مجموعة النسور احتاجت لتشجيع إضافي لتناوب الأدوار..."
+          placeholder="مثال: الطلاب كانوا متفاعلين جدًا في وقت التفكير الفردي، بس مجموعة النسور احتاجت تشجيع أكتر عشان يبدّلوا الأدوار..."
           className="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
@@ -243,7 +243,7 @@ export function SessionAssessmentView({
           ) : (
             <>
               <Save className="w-5 h-5" />
-              <span>حفظ التقييم واعتماد الجلسة والعودة للوحة التحكم</span>
+              <span>حفظ وخلاص الحصة</span>
             </>
           )}
         </button>

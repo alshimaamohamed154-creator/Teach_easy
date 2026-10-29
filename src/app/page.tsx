@@ -43,7 +43,7 @@ export default async function HomePage() {
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
             <a href="#features" className="hover:text-indigo-600 transition">المميزات</a>
             <a href="#activities" className="hover:text-indigo-600 transition">الأنشطة</a>
-            <a href="#workflow" className="hover:text-indigo-600 transition">آلية العمل</a>
+            <a href="#workflow" className="hover:text-indigo-600 transition">إزاي تشتغل</a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -52,7 +52,7 @@ export default async function HomePage() {
                 href="/teacher/dashboard"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition shadow"
               >
-                <span>مساحة عملي</span>
+                <span>مساحتي</span>
                 <ArrowLeft className="w-4 h-4" />
               </Link>
             ) : (
@@ -61,13 +61,13 @@ export default async function HomePage() {
                   href="/login"
                   className="px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-indigo-600 transition"
                 >
-                  تسجيل الدخول
+                  دخول
                 </Link>
                 <Link
                   href="/login"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition shadow"
                 >
-                  ابدأ مجاناً
+                  جرّبها مجانًا
                 </Link>
               </>
             )}
@@ -85,19 +85,19 @@ export default async function HomePage() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8 text-center">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-sm font-bold mb-8">
             <Star className="w-4 h-4 fill-indigo-500 text-indigo-500" />
-            مصمَّمة خصيصاً للمرحلة الثانوية المصرية
+            اتعملت خصوصي للمدرسة الثانوية المصرية
           </span>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight tracking-tight text-slate-900 dark:text-white">
-            حوّل فصلك إلى
+            حوّل الفصل بتاعك لـ
             <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-l from-violet-600 to-indigo-600">
-              تجربة تعلّم تفاعلية
+              تجربة تفاعلية حلوة
             </span>
           </h1>
 
           <p className="mt-8 text-xl sm:text-2xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
-            منصة تعليمية للمعلمين تُنظّم مجموعات الطلاب، وتُطلق أنشطة تعاونية مدروسة،
-            وتعرضها على الشاشة التفاعلية مباشرةً أمام الفصل كله.
+            منصة للمدرسين بتقسّم الطلاب لمجموعات، وتشغّل أنشطة جماعية جاهزة،
+            وتعرضها على الشاشة التفاعلية قدام الفصل كله، من غير أي تعقيد.
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4">
@@ -106,7 +106,7 @@ export default async function HomePage() {
               className="w-full sm:w-auto inline-flex justify-center items-center gap-3 px-10 py-4 rounded-2xl bg-indigo-600 text-white font-black text-lg hover:bg-indigo-700 transition shadow-xl shadow-indigo-500/30 active:scale-95"
             >
               <PlayIcon />
-              ابدأ التدريس الآن
+              ابدأ دلوقتي
             </Link>
             <a
               href="#features"
@@ -119,9 +119,9 @@ export default async function HomePage() {
           {/* Social proof */}
           <div className="mt-14 flex flex-wrap justify-center gap-8 text-sm text-slate-500 dark:text-slate-400 font-semibold">
             {[
-              { n: '٨', label: 'أنشطة تعاونية جاهزة' },
-              { n: '٨', label: 'كفاءات سلوكية مرصودة' },
-              { n: '١٠٠٪', label: 'مشاركة جماعية على الشاشة' },
+              { n: '٨', label: 'أنشطة جاهزة من غير تعقيد' },
+              { n: '٨', label: 'مهارات بتراقبها لكل طالب' },
+              { n: '١٠٠٪', label: 'الفصل كله مشارك على الشاشة' },
             ].map(({ n, label }) => (
               <div key={label} className="text-center">
                 <p className="text-3xl font-black text-slate-900 dark:text-white">{n}</p>
@@ -136,9 +136,9 @@ export default async function HomePage() {
       <section id="features" className="py-24 bg-white dark:bg-slate-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-8">
           <SectionHeader
-            badge="لماذا تيتش إيزي؟"
-            title="كل ما يحتاجه المعلم في مكان واحد"
-            subtitle="لا تعقيد، لا أدوات مبعثرة. فقط إعداد سريع وفصل مشارك بالكامل."
+            badge="ليه تيتش إيزي؟"
+            title="كل اللي المدرس محتاجه في حاجة واحدة"
+            subtitle="من غير تعقيد ولا أدوات متفرقة. بس إعداد سريع وفصل كله مشارك معاك."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
@@ -154,8 +154,8 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-8">
           <SectionHeader
             badge="مكتبة الأنشطة"
-            title="٨ أنشطة تعاونية مدروسة علمياً"
-            subtitle="كل نشاط مُصمَّم وفق أسلوب تعليمي محدد، مع خطوات واضحة وأدوار موزعة لكل مجموعة."
+            title="٨ أنشطة جماعية جاهزة وبسيطة"
+            subtitle="كل نشاط له خطوات واضحة وأدوار موزّعة على كل مجموعة، تشغّله بدوسة واحدة."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
             {ACTIVITIES.map((a) => (
@@ -169,9 +169,9 @@ export default async function HomePage() {
       <section id="workflow" className="py-24 bg-white dark:bg-slate-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-8">
           <SectionHeader
-            badge="آلية العمل"
-            title="من الإعداد إلى الشاشة في دقيقتين"
-            subtitle="دورة كاملة تبدأ قبل الحصة وتنتهي بتقرير ملاحظات جاهز."
+            badge="إزاي تشتغل"
+            title="من الإعداد للشاشة في دقيقتين بس"
+            subtitle="دورة كاملة تبدأ قبل الحصة وتخلص بتقييم جاهز للطلاب."
           />
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {STEPS.map((s, i) => (
@@ -185,17 +185,17 @@ export default async function HomePage() {
       <section className="py-24 bg-gradient-to-br from-indigo-600 to-violet-700">
         <div className="max-w-3xl mx-auto px-4 text-center text-white">
           <h2 className="text-4xl sm:text-5xl font-black leading-tight mb-6">
-            ابدأ أول حصة تفاعلية اليوم
+            جرّب أول حصة تفاعلية النهاردة
           </h2>
           <p className="text-xl text-indigo-100 mb-10 leading-relaxed">
-            سجّل دخولك وأنشئ أول فصلك خلال دقيقة واحدة.
+            سجّل دخولك واعمل فصلك الأول في دقيقة واحدة.
           </p>
           <Link
             href="/login"
             className="inline-flex items-center gap-3 px-12 py-5 rounded-2xl bg-white text-indigo-700 font-black text-lg hover:bg-indigo-50 transition shadow-xl shadow-indigo-900/30 active:scale-95"
           >
             <GraduationCap className="w-6 h-6" />
-            ابدأ الآن — مجاناً
+            ابدأ دلوقتي — مجانًا
           </Link>
         </div>
       </section>
@@ -208,9 +208,9 @@ export default async function HomePage() {
               <GraduationCap className="w-4 h-4" />
             </div>
             <span className="font-bold text-slate-700 dark:text-slate-300">تيتش إيزي</span>
-            <span>— منصة التعلم التعاوني</span>
+            <span>— التعلم الجماعي ببساطة</span>
           </div>
-          <p>© 2026 Teach Easy. جميع الحقوق محفوظة.</p>
+          <p>© 2026 Teach Easy. كل الحقوق محفوظة.</p>
         </div>
       </footer>
     </div>
@@ -317,72 +317,72 @@ function StepCard({
 const FEATURES = [
   {
     icon: Users2,
-    title: 'تجميع المجموعات التلقائي',
-    desc: 'يوزع الطلاب في مجموعات متوازنة بشكل ذكي مع تعيين الأدوار لكل عضو، بضغطة زر واحدة.',
+    title: 'تقسيم مجموعات تلقائي',
+    desc: 'بيوزّع الطلاب لمجموعات متوازنة مع توزيع الأدوار لكل عضو، بدوسة واحدة بس.',
     color: 'bg-indigo-100 dark:bg-indigo-950 text-indigo-600',
   },
   {
     icon: MonitorPlay,
-    title: 'وضع الشاشة التفاعلية',
-    desc: 'واجهة مخصصة للعرض على السبورة الذكية: خطوات النشاط، المجموعات، والمؤقت في مكان واحد.',
+    title: 'الشاشة التفاعلية',
+    desc: 'واجهة واحدة للسبورة الذكية: خطوات النشاط، المجموعات، والعداد في مكان واحد.',
     color: 'bg-violet-100 dark:bg-violet-950 text-violet-600',
   },
   {
     icon: BookOpen,
-    title: '٨ أنشطة تعاونية جاهزة',
-    desc: 'من Think-Pair-Share إلى Jigsaw والجدل البنّاء، كل نشاط مُعدّ بخطوات ووقت وأدوار.',
+    title: '٨ أنشطة جاهزة',
+    desc: 'من فكّر وقول لزميلك لحد تحدي التصميم، كل نشاط فيه خطوات ووقت وأدوار جاهزة.',
     color: 'bg-emerald-100 dark:bg-emerald-950 text-emerald-600',
   },
   {
     icon: ClipboardCheck,
-    title: 'تقييم بعد الجلسة',
-    desc: 'سجّل ملاحظاتك على أداء كل طالب بعد الحصة مباشرةً، مرتبطة بكفاءات سلوكية محددة.',
+    title: 'تقييم بعد الحصة',
+    desc: 'سجّل ملاحظتك على كل طالب بعد الحصة على طول، مربوطة بمهارات واضحة.',
     color: 'bg-amber-100 dark:bg-amber-950 text-amber-600',
   },
   {
     icon: TrendingUp,
-    title: 'متابعة التطور عبر الجلسات',
-    desc: 'لوحة تحكم تُظهر نمو كفاءات كل طالب عبر الجلسات المتكررة وتساعدك في التخطيط.',
+    title: 'متابعة تطور الطلاب',
+    desc: 'لوحة تحكم تبيّن تطور كل طالب على مدار الحصص وتساعدك تخطط أحسن.',
     color: 'bg-rose-100 dark:bg-rose-950 text-rose-600',
   },
   {
     icon: CheckCircle2,
-    title: 'بدون تعقيد تقني',
-    desc: 'الطلاب لا يحتاجون حسابات أو هواتف. المعلم يُدير كل شيء، والفصل يتفاعل على الشاشة.',
+    title: 'من غير أي تعقيد',
+    desc: 'الطلاب مش محتاجين حساب أو موبايل. المدرس بس هو اللي بيدير كل حاجة.',
     color: 'bg-sky-100 dark:bg-sky-950 text-sky-600',
   },
 ]
 
 const ACTIVITIES = [
-  { name: 'فكّر، زاوج، شارك', style: 'Think-Pair-Share', emoji: '💬' },
-  { name: 'أسلوب المنشار', style: 'Jigsaw', emoji: '🧩' },
-  { name: 'تعليم الأقران', style: 'Peer Instruction', emoji: '🙋' },
-  { name: 'دراسة الحالة', style: 'Case-Based Learning', emoji: '📋' },
-  { name: 'الجدل البنّاء', style: 'Structured Controversy', emoji: '⚖️' },
-  { name: 'التصنيف والترتيب', style: 'Classification & Sequencing', emoji: '🗂️' },
-  { name: 'استوديو التغذية الراجعة', style: 'Peer Feedback Studio', emoji: '🔍' },
-  { name: 'تحدي التصميم', style: 'Design Challenge', emoji: '🚀' },
+  { name: 'فكّر وقول لزميلك', style: 'نقاش سريع', emoji: '💬' },
+  { name: 'مجموعات الخبراء', style: 'تعلّم تكاملي', emoji: '🧩' },
+  { name: 'تعليم الأقران', style: 'اسأل زميلك', emoji: '🙋' },
+  { name: 'دراسة حالة وقرار', style: 'حل مشكلة', emoji: '📋' },
+  { name: 'نقاش منظم', style: 'رأيين في معركة', emoji: '⚖️' },
+  { name: 'تصنيف وترتيب', style: 'لمس وتفكير', emoji: '🗂️' },
+  { name: 'استوديو تقييم الزملاء', style: 'ملاحظات بنّاءة', emoji: '🔍' },
+  { name: 'تحدي التصميم', style: 'حل مشكلة حقيقية', emoji: '🚀' },
 ]
 
 const STEPS = [
   {
     icon: Users2,
-    label: 'اختر الفصل والطلاب',
-    desc: 'سجّل فصلك وأضف الطلاب مرة واحدة فقط.',
+    label: 'اختار الفصل والطلاب',
+    desc: 'سجّل فصلك وضيف الطلاب مرة واحدة بس.',
   },
   {
     icon: Layers,
-    label: 'اختر النشاط',
-    desc: 'اختر من ٨ أنشطة جاهزة تناسب موضوعك.',
+    label: 'اختار النشاط',
+    desc: 'اختار من ٨ أنشطة جاهزة تناسب درسك.',
   },
   {
     icon: Timer,
-    label: 'أطلق الشاشة التفاعلية',
-    desc: 'المجموعات تظهر على السبورة مع أدوار وخطوات ومؤقت.',
+    label: 'شغّل الشاشة التفاعلية',
+    desc: 'المجموعات تظهر على السبورة مع الأدوار والخطوات والعداد.',
   },
   {
     icon: PenLine,
-    label: 'سجّل الملاحظات',
-    desc: 'قيّم أداء الطلاب بعد الحصة وتابع تطورهم.',
+    label: 'سجّل ملاحظاتك',
+    desc: 'قيّم الطلاب بعد الحصة وتابع تطورهم بسهولة.',
   },
 ]

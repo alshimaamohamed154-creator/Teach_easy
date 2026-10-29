@@ -35,7 +35,7 @@ export default async function ActivityDetailPage({
         className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-500 hover:text-indigo-600 transition mb-6"
       >
         <ArrowRight className="w-4 h-4" />
-        <span>العودة لمكتبة الأنشطة</span>
+        <span>رجوع لمكتبة الأنشطة</span>
       </Link>
 
       {/* Main Card */}
@@ -61,7 +61,7 @@ export default async function ActivityDetailPage({
             className="touch-target-board px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base shadow-xl shadow-indigo-600/20 flex items-center gap-3 transition active:scale-95 shrink-0 cursor-pointer"
           >
             <PlayCircle className="w-6 h-6" />
-            <span>تجهيز وإطلاق النشاط</span>
+            <span>جهّز وشغّل النشاط</span>
           </Link>
         </div>
 
@@ -69,7 +69,7 @@ export default async function ActivityDetailPage({
         <div className="p-6 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40 mb-8">
           <h2 className="text-base font-bold text-indigo-900 dark:text-indigo-300 mb-2 flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-indigo-600" />
-            السند التربوي والنظري للاستراتيجية:
+            ليه النشاط ده مفيد؟
           </h2>
           <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
             {activity.pedagogicalRationaleAr}
@@ -79,11 +79,11 @@ export default async function ActivityDetailPage({
         {/* Materials & Low Resource Alternative */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
-            <h3 className="font-bold text-sm text-slate-900 dark:text-white mb-1">المواد المجهزة:</h3>
+            <h3 className="font-bold text-sm text-slate-900 dark:text-white mb-1">محتاج تجهّز:</h3>
             <p className="text-xs text-slate-500">{activity.materialsAr}</p>
           </div>
           <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
-            <h3 className="font-bold text-sm text-slate-900 dark:text-white mb-1">البديل منخفض الموارد (Low Resource):</h3>
+            <h3 className="font-bold text-sm text-slate-900 dark:text-white mb-1">لو مفيش شاشة تفاعلية:</h3>
             <p className="text-xs text-slate-500">{activity.lowResourceAlternativeAr}</p>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default async function ActivityDetailPage({
         <div className="mb-8">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <Layers className="w-5 h-5 text-indigo-600" />
-            مراحل النشاط على الشاشة التفاعلية ({activity.steps.length} مراحل):
+            خطوات النشاط على الشاشة ({activity.steps.length} خطوات):
           </h2>
 
           <div className="space-y-3">
@@ -121,7 +121,7 @@ export default async function ActivityDetailPage({
         <div>
           <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-amber-500" />
-            أخطاء التنفيذ الشائعة وحلولها السريعة:
+            مشاكل ممكن تحصل وحلها:
           </h2>
           <div className="space-y-3">
             {activity.failureModes.map((fm, idx) => (
@@ -129,8 +129,8 @@ export default async function ActivityDetailPage({
                 key={idx}
                 className="p-4 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 text-sm"
               >
-                <p className="font-bold text-amber-900 dark:text-amber-300">⚠️ التحدي: {fm.modeAr}</p>
-                <p className="text-amber-800 dark:text-amber-400 mt-1">💡 الحل الإجرائي: {fm.solutionAr}</p>
+                <p className="font-bold text-amber-900 dark:text-amber-300">⚠️ المشكلة: {fm.modeAr}</p>
+                <p className="text-amber-800 dark:text-amber-400 mt-1">💡 الحل: {fm.solutionAr}</p>
               </div>
             ))}
           </div>

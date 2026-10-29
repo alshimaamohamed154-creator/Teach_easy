@@ -42,10 +42,10 @@ export default async function NewSessionPage({
     <div className="p-6 sm:p-10 max-w-7xl mx-auto w-full">
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">
-          تجهيز وإطلاق جلسة تعلم تفاعلية
+          جهّز حصتك التفاعلية
         </h1>
         <p className="text-slate-500 mt-1">
-          حدد الفصل والنشاط وتفقد المجموعات المتوازنة ثم أطلق الشاشة التفاعلية أمام الطلاب مباشرة.
+          اختار الفصل والنشاط، شوف المجموعات، وبعدين شغّل الشاشة قدام الطلاب على طول.
         </p>
       </div>
 

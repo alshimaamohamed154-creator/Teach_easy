@@ -31,13 +31,13 @@ export default async function TeacherDashboardPage() {
       <div className="bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 rounded-3xl p-8 sm:p-10 text-white shadow-xl mb-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
           <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
-            منصة التعلم التعاوني والشاشات التفاعلية
+            التعلم الجماعي على الشاشة التفاعلية
           </span>
           <h1 className="text-3xl sm:text-4xl font-black mt-3 mb-2">
-            مرحباً بك، {user?.user_metadata?.full_name || 'أستاذنا الفاضل'} 👋
+            أهلاً بيك، {user?.user_metadata?.full_name || 'أستاذنا'} 👋
           </h1>
           <p className="text-indigo-100 max-w-xl text-sm sm:text-base leading-relaxed">
-            جاهز لإدارة حصة تفاعلية ممتعة اليوم؟ اختر الفصل والنشاط وافتح وضع الشاشة بضغطة زر واحدة.
+            جاهز لحصة تفاعلية حلوة النهاردة؟ اختار الفصل والنشاط وشغّل الشاشة بدوسة واحدة.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export default async function TeacherDashboardPage() {
           className="touch-target-board px-8 py-4 rounded-2xl bg-white text-indigo-700 hover:bg-indigo-50 font-black text-base shadow-xl flex items-center gap-3 transition-all active:scale-95 shrink-0"
         >
           <PlayCircle className="w-6 h-6 text-indigo-600" />
-          <span>بدء جلسة جديدة الآن</span>
+          <span>ابدأ حصة جديدة دلوقتي</span>
         </Link>
       </div>
 
@@ -54,46 +54,46 @@ export default async function TeacherDashboardPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
         <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-semibold text-slate-500">الفصول النشطة</span>
+            <span className="text-sm font-semibold text-slate-500">فصولك</span>
             <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600">
               <Users2 className="w-5 h-5" />
             </div>
           </div>
           <p className="text-3xl font-black text-slate-900 dark:text-white">{analytics.totalClasses}</p>
-          <span className="text-xs text-slate-400 mt-1 block">فصول دراسية مسجلة</span>
+          <span className="text-xs text-slate-400 mt-1 block">فصل مسجّل</span>
         </div>
 
         <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-semibold text-slate-500">إجمالي الطلاب</span>
+            <span className="text-sm font-semibold text-slate-500">عدد الطلاب</span>
             <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600">
               <Sparkles className="w-5 h-5" />
             </div>
           </div>
           <p className="text-3xl font-black text-slate-900 dark:text-white">{analytics.totalStudents}</p>
-          <span className="text-xs text-slate-400 mt-1 block">طالباً في القوائم</span>
+          <span className="text-xs text-slate-400 mt-1 block">طالب في القوايم</span>
         </div>
 
         <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-semibold text-slate-500">الأنشطة المنفذة</span>
+            <span className="text-sm font-semibold text-slate-500">الحصص اللي خلصت</span>
             <div className="p-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600">
               <BookOpen className="w-5 h-5" />
             </div>
           </div>
           <p className="text-3xl font-black text-slate-900 dark:text-white">{analytics.totalSessions}</p>
-          <span className="text-xs text-slate-400 mt-1 block">جلسة تفاعلية مكتملة</span>
+          <span className="text-xs text-slate-400 mt-1 block">حصة تفاعلية</span>
         </div>
 
         <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-semibold text-slate-500">الكفاءات المتابعة</span>
+            <span className="text-sm font-semibold text-slate-500">المهارات بتتابعها</span>
             <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-600">
               <Award className="w-5 h-5" />
             </div>
           </div>
           <p className="text-3xl font-black text-slate-900 dark:text-white">8</p>
-          <span className="text-xs text-slate-400 mt-1 block">كفاءات تعاونية سلوكية</span>
+          <span className="text-xs text-slate-400 mt-1 block">مهارات جماعية</span>
         </div>
       </div>
 
@@ -103,14 +103,14 @@ export default async function TeacherDashboardPage() {
         <div className="lg:col-span-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white">فصولك الدراسية</h2>
-              <p className="text-sm text-slate-500">اختر فصلاً لإدارة الطلاب وقوائم الحضور</p>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">فصولك</h2>
+              <p className="text-sm text-slate-500">اختار فصل عشان تدير طلابه وحضورهم</p>
             </div>
             <Link
               href="/teacher/classes"
               className="text-sm font-bold text-indigo-600 hover:text-indigo-500 flex items-center gap-1"
             >
-              <span>عرض الكل</span>
+              <span>كل الفصول</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -133,7 +133,7 @@ export default async function TeacherDashboardPage() {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-700/40 flex justify-between text-xs font-semibold text-slate-500">
-                  <span>{c.student_count || 24} طالباً</span>
+                  <span>{c.student_count || 24} طالب</span>
                   <span>{c.academic_year}</span>
                 </div>
               </Link>
@@ -144,8 +144,8 @@ export default async function TeacherDashboardPage() {
         {/* Recent Observations */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
           <div>
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">أحدث الملاحظات السلوكية</h2>
-            <p className="text-sm text-slate-500 mb-6">رصد نمو كفاءات الطلاب أثناء العمل الجماعي</p>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">آخر الملاحظات</h2>
+            <p className="text-sm text-slate-500 mb-6">تطور مهارات الطلاب وهم بيشتغلوا مع بعض</p>
 
             <div className="space-y-4">
               {analytics.recentObservations.map((obs, idx) => (
@@ -166,7 +166,7 @@ export default async function TeacherDashboardPage() {
           </div>
 
           <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-400 text-center">
-            تعتمد التقييمات على السلوك الملاحظ فقط دون إطلاق أحكام مطلقة على قدرات الطالب.
+            التقييم ده بناءً على اللي شوفته بس، مش حكم نهائي على الطالب.
           </div>
         </div>
       </div>
